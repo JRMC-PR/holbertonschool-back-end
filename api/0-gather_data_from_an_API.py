@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module mimplements a RESt API using python for request"""
+"""This module uses Python to make a requesto a an REST API"""
 import requests
 import sys
 
