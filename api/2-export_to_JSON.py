@@ -5,6 +5,7 @@ and prints a summary of the tasks completed and the titles of the completed task
 """
 import requests
 import sys
+import json
 
 
 # get the employee id
@@ -37,3 +38,11 @@ print(
 for task in todos_data:
     if task['completed']:
         print('\t ' + task['title'])
+
+# Export using JSON Format
+with open('USER_ID.json', 'w') as jsonfile:
+    json.dump({employee_id: [{
+        "task": task['title'],
+        "completed": task['completed'],
+        "username": employee_name
+    } for task in todos_data]}, jsonfile)
