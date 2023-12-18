@@ -9,31 +9,35 @@ import requests
 import sys
 
 
-# get the employee id
+# Get the employee ID from the command line arguments
 employee_id = sys.argv[1]
-# set the url and get a respnse
+
+# Send a GET request to the API to get the user data
 user_response = requests.get(
     f'https://jsonplaceholder.typicode.com/users/{employee_id}')
-# get data in json form
 
+# Parse the response data as JSON
 data = user_response.json()
-# get the name of the employee
+
+# Extract the employee's name from the data
 employee_name = data['name']
 
-# get the todo data fro the API
+# Send another GET request to the API to get the todo data
 todos_response = requests.get(
     f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}')
-# get the data in json form
+
+# Parse the todo data as JSON
 todos_data = todos_response.json()
 
-# get the total number of tasks
+# Calculate the total number of tasks
 total_todos = len(todos_data)
-# get the number of completed tasks
-ok_todos = sum(1 for task in todos_data if task['completed'])
+
+# Calculate the number of completed tasks
+completed_todos = sum(1 for task in todos_data if task['completed'])
 
 # Print the first line of the output
 print(
-    f'Employee {employee_name} is done with tasks({ok_todos}/{total_todos}):')
+    f'Employee {employee_name} is done with tasks({completed_todos}/{total_todos}):')
 
 # Print the title of each completed task
 for task in todos_data:

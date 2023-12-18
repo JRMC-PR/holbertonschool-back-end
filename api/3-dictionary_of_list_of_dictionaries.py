@@ -12,7 +12,7 @@ import requests
 # Reuet data for users
 users = requests.get('https://jsonplaceholder.typicode.com/users').json()
 
-# make an empty dictionary
+# Make an empty dictionary
 all_tasks = {}
 
 # Loop over all users
@@ -21,11 +21,11 @@ for user in users:
     user_id = user['id']
     user_name = user['username']
 
-    # get the list
+    # Get the list
     todo_list = requests.get(
         f'https://jsonplaceholder.typicode.com/todos?userId={user_id}').json()
 
-    # format the task as indicated
+    # Format the task as indicated
     task_list = [{'username': user_name, 'task': task.get(
         'title'), 'completed': task.get('completed')} for task in todo_list]
 
