@@ -54,3 +54,6 @@ with open('USER_ID.csv', 'w') as csvfile:
         # Writing the fields to the csv file
         writer.writerow([employee_id, employee_name, task['completed'],
                          task['title']])
+
+if __name__ == '__main__':
+    pass

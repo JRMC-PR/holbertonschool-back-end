@@ -35,3 +35,6 @@ for user in users:
 # Export using Json format
 with open('todo_all_employees.json', 'w') as jsonfile:
     json.dump(all_tasks, jsonfile)
+
+if __name__ == '__main__':
+    pass

@@ -48,3 +48,6 @@ with open('USER_ID.json', 'w') as jsonfile:
         "completed": task['completed'],
         "username": employee_name
     } for task in todos_data]}, jsonfile)
+
+if __name__ == '__main__':
+    pass
