@@ -15,7 +15,7 @@ employee_id = sys.argv[1]
 
 # Send a GET request to the API to get the user data
 user_response = requests.get(
-    f'https://jsonplaceholder.typicode.com/users/{employee_id}')
+    'https://jsonplaceholder.typicode.com/users/' + employee_id)
 
 # Parse the response data as JSON
 data = user_response.json()
@@ -25,20 +25,20 @@ employee_name = data['name']
 
 # Send another GET request to the API to get the todo data
 todos_response = requests.get(
-    f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}')
+    'https://jsonplaceholder.typicode.com/todos?userId=' + employee_id)
 
 # Parse the todo data as JSON
 todos_data = todos_response.json()
 
 # Calculate the total number of tasks
-total_todos = len(todos_data)
+total_todos = str(len(todos_data))
 
 # Calculate the number of completed tasks
-completed_todos = sum(1 for task in todos_data if task['completed'])
+completed_todos = str(sum(1 for task in todos_data if task['completed']))
 
 # Print the first line of the output
 print("Employee " + employee_name + " is done with tasks(" +
-      str(completed_todos) + "/" + str(total_todos) + "):")
+      completed_todos + "/" + total_todos + "):")
 
 # Print the title of each completed task
 for task in todos_data:
